@@ -20,6 +20,7 @@ Each section of the roadmap will have it's own directory, which will be in the r
 
 ## Solutions Overview
 These are the sections of the roadmap, in the order I will most likely be completing them. If a section has been started by me, it will have a progress bar next to it, and it will link to a section outlining my solutions to the problems in that section that I've completed so far. If it has been completed, it will have a checkmark next to it.
+### Total : ![1/150](https://progress-bar.xyz/1/?scale=150&suffix=/150)
 - [ ] [Arrays and Hashing](#arrays-and-hashing) ![1/9](https://progress-bar.xyz/1/?scale=9&suffix=/9)
 - [ ] Two Pointers
 - [ ] Stack
