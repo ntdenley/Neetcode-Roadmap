@@ -39,7 +39,7 @@ These are the sections of the roadmap, in the order I will most likely be comple
 - [ ] 2-D DP
 - [ ] Bit Manipulation
 - [ ] Math & Geometry
-
+---
 ## Arrays and Hashing
 
 1. [Duplicate Integer](#duplicate-integer)
