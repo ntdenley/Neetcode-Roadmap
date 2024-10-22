@@ -44,11 +44,16 @@ These are the sections of the roadmap, in the order I will most likely be comple
 
 1. [Duplicate Integer](#duplicate-integer)
 
-### Duplicate Integer
-Solved in C++
+### [Duplicate Integer](https://neetcode.io/problems/duplicate-integer)
+#### Problem Description
+This problem involves checking if there is a duplicate integer in the given list of integers. At face value, this means we need to iterate through the list until we find a duplicate. At first, I considered creating a bucket for each number, then adding the integers into each bucket until one of them had more than one item, indicating a duplicate. After considering this, I decided it was likely unnecessary and overcomplicated for this problem. The solution I ended up going with was to sort the array using `sort()`, then I could simply check for adjacent integers to see if there are duplicates. While this may not be the most time-efficient solution (since it requires sorting the whole list upfront), it meant that I wouldn't need to keep track of any intermediate data while parsing the list, such as what integers I've already seen.
 
-[Problem on Neetcode](https://neetcode.io/problems/duplicate-integer)
+[My Solution (C++)](Arrays_and_Hashing/Duplicate_Integer/solution.cpp)
 
-This problem involves checking if there is a duplicate integer in the given list of integers. At face value, this means we need to iterate through the list until we find a duplicate. At first, I considered creating a bucket for each number, then adding the integers into each bucket until one of them had more than one item, indicating a duplicate. After considering this, I decided it was likely unnecessary and overcomplicated for this problem. The solution I ended up going with was to sort the array using `std::sort`, then I could simply check for adjacent integers to see if there are duplicates. While this may not be the most time-efficient solution (since it requires sorting the whole list upfront), it meant that I wouldn't need to keep track of any intermediate data while parsing the list, such as what integers I've already seen.
+#### Solution analysis
+Time Complexity -> `O(n*log(n))`
 
-[My Solution](Arrays_and_Hashing/Duplicate_Integer/solution.cpp)
+This is not the fastest time complexity for this problem, but definitely not the worst case. The worst case is a brute force method, which iterates through the list once for each element of the list, checking if a duplicate element exist. This worst case solition has a time complexity of `O(n^2)`. The best time-efficient solution for this problem involves the use of an (`unordered_set`). If the array is iterated through once and each element is added to a set, the length of the set can be compared to the array. If the set is smaller (meaning duplicates were removed), then we know that a duplicate must exist in the array.
+
+#### Key Takeaways
+In the future, I should definitely take advantage of sets/hashes in order to create more time-efficient programs.
