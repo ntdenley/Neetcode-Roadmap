@@ -44,6 +44,8 @@ These are the sections of the roadmap, in the order I will most likely be comple
 
 1. [Duplicate Integer](#duplicate-integer)
 
+---
+
 ### [Duplicate Integer](https://neetcode.io/problems/duplicate-integer)
 #### Problem Description
 This problem involves checking if there is a duplicate integer in the given list of integers. At face value, this means we need to iterate through the list until we find a duplicate. At first, I considered creating a bucket for each number, then adding the integers into each bucket until one of them had more than one item, indicating a duplicate. After considering this, I decided it was likely unnecessary and overcomplicated for this problem. The solution I ended up going with was to sort the array using `sort()`, then I could simply check for adjacent integers to see if there are duplicates. While this may not be the most time-efficient solution (since it requires sorting the whole list upfront), it meant that I wouldn't need to keep track of any intermediate data while parsing the list, such as what integers I've already seen.
