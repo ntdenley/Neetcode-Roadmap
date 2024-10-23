@@ -20,8 +20,8 @@ Each section of the roadmap will have it's own directory, which will be in the r
 
 ## Solutions Overview
 These are the sections of the roadmap, in the order I will most likely be completing them. If a section has been started by me, it will have a progress bar next to it, and it will link to a section outlining my solutions to the problems in that section that I've completed so far. If it has been completed, it will have a checkmark next to it.
-### Total : ![2/150](https://progress-bar.xyz/2/?scale=150&suffix=/150)
-- [ ] [Arrays and Hashing](#arrays-and-hashing) ![2/9](https://progress-bar.xyz/2/?scale=9&suffix=/9)
+### Total : ![3/150](https://progress-bar.xyz/3/?scale=150&suffix=/150)
+- [ ] [Arrays and Hashing](#arrays-and-hashing) ![3/9](https://progress-bar.xyz/3/?scale=9&suffix=/9)
 - [ ] Two Pointers
 - [ ] Stack
 - [ ] Binary Search
@@ -44,6 +44,7 @@ These are the sections of the roadmap, in the order I will most likely be comple
 
 1. [Duplicate Integer](#duplicate-integer)
 2. [Is Anagram](#is-anagram)
+3. [Two Integer Sum](#two-integer-sum)
 
 ---
 
@@ -76,3 +77,26 @@ This is the best time complexity possible for this problem, but there are still 
 
 #### Key Takeaways:
 The most notable takeaway here is while hashtables can be reliable for making time efficient solutions to problems, they may not always be necessary. Additionally, taking advantage of the provided constraints (in this case, the knowledge that each string will only consist of lowercase alphabetic character) can allow for further optimizations.
+
+---
+
+### [Two Integer Sum](https://neetcode.io/problems/two-integer-sum)
+#### My Approach:
+Two Int Sum is an infamous problem that requires you to find the indices of two integers in a list that sum up to a given target value. Initially, I attempted to solve this problem using the well-known two-pointer approach. The basic idea is that you start with a pointer to each end of the list, and shift them from the ends until the target sum value is reached. While this approach worked for the basic tests, it only ended up passing 7 out of 23 of the overall tests. The main reason for this is that my approach was assuming that the list is sorted, and while it was sorted in the basic tests, it was not sorted in all the overall tests.
+
+Of course, one way this problem could be solved without fail is the brute force method, where for each int element, you check all other ints in the list to see if any of them add up to the target. This is `O(n^2)`, so not very ideal for a time-efficient solution. My next idea was to explore a hashmap-based approach.
+
+To utilize a hashmap for this problem, I'll keep a dictionary of past values and their corresponding index, so the key is the num, and the value is its index. By traversing the array once, I can keep track of which nums I've seen, and every time I look at a new number, I can find the difference between the target and itself, and then perform a constant-time lookup into the dictionary. If a match is found, return the value of the entry (the index), and the index of the number currently being looked at. Since the dictionary is built on previously seen values, it will always mean the earliest index is returned as the first part of the return value.
+
+[My Solution (Python)](Arrays_and_Hashing/Two_Integer_Sum/solution.py)
+[My Solution (C++)](Arrays_and_Hashing/Two_Integer_Sum/solution.cpp)
+
+#### Solution Analysis:
+Time Complexity -> `O(n)`
+
+This is the optimal performance of this problem, especially since two-pointers is not a viable solution due to the array not always being sorted. Neetcode's solution is essentially the same as what I have, and there doesn't seem to be any other offered solution methods, although brute forcing the problem is still possible, despite being much slower than the hash solution. The reason the hash solution is linear time is because the list is only iterated through once, and the lookups onto the past indices are constant (since it's a hashmap). 
+
+#### Key Takeaways:
+Although two pointers didn't work for the entire testbed, there was still a lot of value in conceptualizing and implementing it. Hashmaps are very flexible and effective for a large range of problems, but these other methods still have their place for more intuitive solutions.
+
+---
