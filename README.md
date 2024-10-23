@@ -88,8 +88,7 @@ Of course, one way this problem could be solved without fail is the brute force 
 
 To utilize a hashmap for this problem, I'll keep a dictionary of past values and their corresponding index, so the key is the num, and the value is its index. By traversing the array once, I can keep track of which nums I've seen, and every time I look at a new number, I can find the difference between the target and itself, and then perform a constant-time lookup into the dictionary. If a match is found, return the value of the entry (the index), and the index of the number currently being looked at. Since the dictionary is built on previously seen values, it will always mean the earliest index is returned as the first part of the return value.
 
-[My Solution (Python)](Arrays_and_Hashing/Two_Integer_Sum/solution.py)
-[My Solution (C++)](Arrays_and_Hashing/Two_Integer_Sum/solution.cpp)
+My Solutions ->[(Python)](Arrays_and_Hashing/Two_Integer_Sum/solution.py), [(C++)](Arrays_and_Hashing/Two_Integer_Sum/solution.cpp)
 
 #### Solution Analysis:
 Time Complexity -> `O(n)`
