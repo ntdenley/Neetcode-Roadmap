@@ -20,8 +20,8 @@ Each section of the roadmap will have it's own directory, which will be in the r
 
 ## Solutions Overview
 These are the sections of the roadmap, in the order I will most likely be completing them. If a section has been started by me, it will have a progress bar next to it, and it will link to a section outlining my solutions to the problems in that section that I've completed so far. If it has been completed, it will have a checkmark next to it.
-### Total : ![4/150](https://progress-bar.xyz/4/?scale=150&suffix=/150)
-- [ ] [Arrays and Hashing](#arrays-and-hashing) ![4/9](https://progress-bar.xyz/4/?scale=9&suffix=/9)
+### Total : ![5/150](https://progress-bar.xyz/5/?scale=150&suffix=/150)
+- [ ] [Arrays and Hashing](#arrays-and-hashing) ![5/9](https://progress-bar.xyz/5/?scale=9&suffix=/9)
 - [ ] Two Pointers
 - [ ] Stack
 - [ ] Binary Search
@@ -46,6 +46,7 @@ These are the sections of the roadmap, in the order I will most likely be comple
 2. [Is Anagram](#is-anagram)
 3. [Two Integer Sum](#two-integer-sum)
 4. [Anagram Groups](#anagram-groups)
+5. [Top K Elements in List](#top-k-elements-in-list)
 
 ---
 
@@ -118,5 +119,23 @@ Neetcode's ideal solution involves using a hashmap with a tuple key, where the t
 
 #### Key Takeaways:
 I often forget that tuples are hashable in python. This is really convenient to know when accessing hashmaps with more complex access requirements, or associating values with a set of information, such as the character counts. In C++, tuples are not hashable however, so the ideal solution required a string to be constructed from the vector of character counts. While that is not as convenient as python's approach, it's a good trick to know for the future.
+
+---
+
+### [Top K Elements in List](https://neetcode.io/problems/top-k-elements-in-list)
+#### My Approach:
+This problem involves going through a list of numbers and returning the top k occuring elements in the list. I spent a lot of time thinking about how to best approach this problem, and eventually decided to just go with the sorting method. The approach is simple - make a count dictionary to keep track of element occurrences, then after counting, sort the dictionary by value and return the top k keys. In python, this was pretty straightforward.
+
+While thinking about this problem, I knew there must be some way to solve this problem faster. I was surprised to see Neetcode's ideal solution after submitting my own, and noticed that a bucket sort was used.
+
+[My Solution (Python)](/Arrays_and_Hashing/Top_K_Elements_In_List/solution.py)
+
+#### Solution Analysis:
+Time Complexity -> `O(n log(n))`
+
+Using bucket sort was really clever, and makes a lot of sense for this problem. The idea here is that you count all the occurrences as usual, but then after counting them, you place each element into a bucket array, where the index of the bucket is the occurence count of the element. This means that after placing all the elements in the buckets, you can simply iterate through the bucket arrays and their buckets backwards until you have enough elements to return. While this approach requires a handful of loops (one to count, one to place, one to get the return values), they are all linear time `O(n)`, and in time complexity analysis, the fact that there are three loops becomes arbitrary when approaching large values, unlike a nested loop.
+
+#### Key Takeaways:
+Going through this section has my mind in the right place for utilizing hash maps, but they are not all-purpose. They can be good for constant time lookups and storing information, but a sorting problem should require a sorting algorithm. I'll have to be more mindful when considering which tools work best for each problem, since I've known about bucket sort, but never considered it for this problem.
 
 ---
