@@ -20,8 +20,8 @@ Each section of the roadmap will have it's own directory, which will be in the r
 
 ## Solutions Overview
 These are the sections of the roadmap, in the order I will most likely be completing them. If a section has been started by me, it will have a progress bar next to it, and it will link to a section outlining my solutions to the problems in that section that I've completed so far. If it has been completed, it will have a checkmark next to it.
-### Total : ![3/150](https://progress-bar.xyz/3/?scale=150&suffix=/150)
-- [ ] [Arrays and Hashing](#arrays-and-hashing) ![3/9](https://progress-bar.xyz/3/?scale=9&suffix=/9)
+### Total : ![4/150](https://progress-bar.xyz/4/?scale=150&suffix=/150)
+- [ ] [Arrays and Hashing](#arrays-and-hashing) ![4/9](https://progress-bar.xyz/4/?scale=9&suffix=/9)
 - [ ] Two Pointers
 - [ ] Stack
 - [ ] Binary Search
@@ -45,6 +45,7 @@ These are the sections of the roadmap, in the order I will most likely be comple
 1. [Duplicate Integer](#duplicate-integer)
 2. [Is Anagram](#is-anagram)
 3. [Two Integer Sum](#two-integer-sum)
+4. [Anagram Groups](#anagram-groups)
 
 ---
 
@@ -97,5 +98,25 @@ This is the optimal performance of this problem, especially since two-pointers i
 
 #### Key Takeaways:
 Although two pointers didn't work for the entire testbed, there was still a lot of value in conceptualizing and implementing it. Hashmaps are very flexible and effective for a large range of problems, but these other methods still have their place for more intuitive solutions.
+
+---
+
+### [Anagram Groups](https://neetcode.io/problems/anagram-groups)
+#### My Approach:
+The anagram groups problem requires you to take a list of strings and group them into anagrams. Initially, my idea was to sum the character values in each string and use the sum as a key into a hashmap of string vectors containing all the anagrams. While this worked for a majority of the tests, there was an edge case that caused my original idea to fall apart. The main issue with summing the character values is that if there are two characters which sum up to another, then they can be used in place of the single character they sum up to. For example, let's say that 'a' + 'b' = 'c' (not true in practice but we'll go with it), then the substring "ab" and "c" would be considered anagrams of eachother by my method.
+
+I was hesitant to try this second approach because while I thought of it early on into solving this problem, I felt that it wasn't the optimal solution. Since my last idea didn't work out however, I gave it a go. This method, while slower than the optimal, is reliable since it involves sorting the incoming string and comparing it to a hashmap of sorted string keys. By sorting a string, it forces all anagrams to become equivalent to one another (for example, "act" remains as "act" when sorted, but "cat" also becomes "act", allowing for easy anagram checking). I knew that sorting each string would be a slower approach than ideal, but after implementing it, it still passed all the tests.
+
+[My Solution (Python)](/Arrays_and_Hashing/Anagram_Groups/solution.py)
+
+#### Solution Analysis:
+Time Complexity -> `O(n * m log(m))`, where n is the number of strings, and m is the length of the longest string.
+
+The sorting step is what really hurts the time complexity here. The time complexity of `std::sort` is `O(n log(n))`, and since that's done for every string in the list, we get this multiplicative behavior.
+
+Neetcode's ideal solution involves using a hashmap with a tuple key, where the tuple contains the count values of each character in the given string. While this may seem like a waste of space, it's a consistent amount per tuple, so the space complexity also ends up being better than my solution. The time complexity of Neetcode's ideal solution is `O(n)`.
+
+#### Key Takeaways:
+I often forget that tuples are hashable in python. This is really convenient to know when accessing hashmaps with more complex access requirements, or associating values with a set of information, such as the character counts. In C++, tuples are not hashable however, so the ideal solution required a string to be constructed from the vector of character counts. While that is not as convenient as python's approach, it's a good trick to know for the future.
 
 ---
