@@ -20,8 +20,8 @@ Each section of the roadmap will have it's own directory, which will be in the r
 
 ## Solutions Overview
 These are the sections of the roadmap, in the order I will most likely be completing them. If a section has been started by me, it will have a progress bar next to it, and it will link to a section outlining my solutions to the problems in that section that I've completed so far. If it has been completed, it will have a checkmark next to it.
-### Total : ![5/150](https://progress-bar.xyz/5/?scale=150&suffix=/150)
-- [ ] [Arrays and Hashing](#arrays-and-hashing) ![5/9](https://progress-bar.xyz/5/?scale=9&suffix=/9)
+### Total : ![6/150](https://progress-bar.xyz/6/?scale=150&suffix=/150)
+- [ ] [Arrays and Hashing](#arrays-and-hashing) ![6/9](https://progress-bar.xyz/6/?scale=9&suffix=/9)
 - [ ] Two Pointers
 - [ ] Stack
 - [ ] Binary Search
@@ -47,6 +47,7 @@ These are the sections of the roadmap, in the order I will most likely be comple
 3. [Two Integer Sum](#two-integer-sum)
 4. [Anagram Groups](#anagram-groups)
 5. [Top K Elements in List](#top-k-elements-in-list)
+6. [String Encode and Decode](#string-encode-and-decode)
 
 ---
 
@@ -137,5 +138,21 @@ Using bucket sort was really clever, and makes a lot of sense for this problem. 
 
 #### Key Takeaways:
 Going through this section has my mind in the right place for utilizing hash maps, but they are not all-purpose. They can be good for constant time lookups and storing information, but a sorting problem should require a sorting algorithm. I'll have to be more mindful when considering which tools work best for each problem, since I've known about bucket sort, but never considered it for this problem.
+
+---
+
+### [String Encode and Decode](https://neetcode.io/problems/string-encode-and-decode)
+#### My Approach:
+I'll admit, this one really got me. At first, I was confused on how I should start encoding the string. The problem is very open-ended, allowing for many avenues. I decided to try the easy road of using `join` and `split`, but this did not get me very far. After getting stuck on an edge case of empty strings or a list of a single empty string, I ultimately chose to have a look at Neetcode's solution, and the moment I saw it, I recognized the encoding method. This is a method I've seen most recently in my database and information retrieval courses, when several chunks of data are stored in one contiguous chunk with variable length. The implementation here requires the length of each string, a delimiter (In Neetcode's case, a "#" was used), and the string itself. 
+
+[Neetcode's Solution w/ my Breakdown (Python)](/Arrays_and_Hashing/String_Encode_and_Decode/solution.py)
+
+#### Solution Analysis:
+Time Complexity -> `O(n)`
+
+The time complexity isn't really important here, since the problem was more centered around the design of the encoding algorithm. Since we scan the string list and the encoded string only once per encode/decode, it's simply a linear time complexity
+
+#### Key Takeaways:
+While python has many useful functions and string operations which can seem like shortcuts, they should not be relied on as a quick fix for every problem. I had been considering variable length encoding, but decided not to try it in favor of using python's simpler string functions. This was my largest mistake on this problem.
 
 ---
