@@ -164,7 +164,7 @@ This is my first encounter with a prefix/postfix problem. My solution did not ut
 
 For the prefix/postfix solution, I followed Neetcode's explanation of the problem. The idea is pretty straighforward actually, since if you know the total product of everything before and everything after your current number, just multiply those to get the product without the current number. There's two ways to approach this, one more ideal than the other. You can pre-compute the prefix and postix product arrays, then access them when computing the result, or we can take advantage of the fact that multiplication does not care about the order of operations with other multiplication. This means that we can compute prefixes and apply them to each result in a single pass through the nums array, then apply the postfix products on a second backwards pass through nums, giving us the same result with linear time and a space complexity of `O(1)`.
 
-[My Division Solution (Python)](/Arrays_and_Hashing/Product_of_Array_Except_Self/solution.py)
+[My Division Solution (Python)](/Arrays_and_Hashing/Product_of_Array_Except_Self/solution.py) <br />
 [Prefix/Postfix Solution (Python)](/Arrays_and_Hashing//Product_of_Array_Except_Self/ideal-solution.py)
 
 #### Solution Analysis:
