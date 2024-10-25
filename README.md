@@ -20,8 +20,8 @@ Each section of the roadmap will have it's own directory, which will be in the r
 
 ## Solutions Overview
 These are the sections of the roadmap, in the order I will most likely be completing them. If a section has been started by me, it will have a progress bar next to it, and it will link to a section outlining my solutions to the problems in that section that I've completed so far. If it has been completed, it will have a checkmark next to it.
-### Total : ![6/150](https://progress-bar.xyz/6/?scale=150&suffix=/150)
-- [ ] [Arrays and Hashing](#arrays-and-hashing) ![6/9](https://progress-bar.xyz/6/?scale=9&suffix=/9)
+### Total : ![7/150](https://progress-bar.xyz/7/?scale=150&suffix=/150)
+- [ ] [Arrays and Hashing](#arrays-and-hashing) ![7/9](https://progress-bar.xyz/7/?scale=9&suffix=/9)
 - [ ] Two Pointers
 - [ ] Stack
 - [ ] Binary Search
@@ -48,6 +48,7 @@ These are the sections of the roadmap, in the order I will most likely be comple
 4. [Anagram Groups](#anagram-groups)
 5. [Top K Elements in List](#top-k-elements-in-list)
 6. [String Encode and Decode](#string-encode-and-decode)
+7. [Products of Array Discluding Self](#product-of-array-except-self)
 
 ---
 
@@ -154,5 +155,25 @@ The time complexity isn't really important here, since the problem was more cent
 
 #### Key Takeaways:
 While python has many useful functions and string operations which can seem like shortcuts, they should not be relied on as a quick fix for every problem. I had been considering variable length encoding, but decided not to try it in favor of using python's simpler string functions. This was my largest mistake on this problem.
+
+---
+
+### [Product of Array Except Self](https://neetcode.io/problems/products-of-array-discluding-self)
+#### My Approach:
+This is my first encounter with a prefix/postfix problem. My solution did not utilize this approach, but after my first solution I came back to it and looked at Neetcode's implementation to give it a try. Naively, the easy solution here is to just compute the total product of the list, and then go back through the list and divide the total product by each num, placing it into the result. This requires being aware of zeroes in your array, but it's not to hard to work around. Ultimately, my first solution worked, and it is a linear-time solution, just not the ideal one.
+
+For the prefix/postfix solution, I followed Neetcode's explanation of the problem. The idea is pretty straighforward actually, since if you know the total product of everything before and everything after your current number, just multiply those to get the product without the current number. There's two ways to approach this, one more ideal than the other. You can pre-compute the prefix and postix product arrays, then access them when computing the result, or we can take advantage of the fact that multiplication does not care about the order of operations with other multiplication. This means that we can compute prefixes and apply them to each result in a single pass through the nums array, then apply the postfix products on a second backwards pass through nums, giving us the same result with linear time and a space complexity of `O(1)`.
+
+[My Division Solution (Python)](/Arrays_and_Hashing/Product_of_Array_Except_Self/solution.py)
+[Prefix/Postfix Solution (Python)](/Arrays_and_Hashing//Product_of_Array_Except_Self/ideal-solution.py)
+
+#### Solution Analysis:
+Time/Space Complexity (solution 1) -> `O(n)/O(1)`
+Time/Space Complexity (pre/postfix) -> `O(n)/O(1)`
+
+Notice how these have the same time and space complexities. While the division method is certainly still viable, the prefix product solution is more elegant, and requires less information to keep track of (such as the number of zeroes). It also does not require integer division, which oftentimes is slower than multiplication.
+
+#### Key Takeaways:
+I've been wanting to see an application of prefix and postfix operations for some time now, since I've heard a lot about how useful they can be. I'll definitely keep this concept in mind for future problems!
 
 ---
