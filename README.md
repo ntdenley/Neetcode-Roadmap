@@ -168,7 +168,7 @@ For the prefix/postfix solution, I followed Neetcode's explanation of the proble
 [Prefix/Postfix Solution (Python)](/Arrays_and_Hashing//Product_of_Array_Except_Self/ideal-solution.py)
 
 #### Solution Analysis:
-Time/Space Complexity (solution 1) -> `O(n)/O(1)`
+Time/Space Complexity (solution 1) -> `O(n)/O(1)` <br />
 Time/Space Complexity (pre/postfix) -> `O(n)/O(1)`
 
 Notice how these have the same time and space complexities. While the division method is certainly still viable, the prefix product solution is more elegant, and requires less information to keep track of (such as the number of zeroes). It also does not require integer division, which oftentimes is slower than multiplication.
