@@ -20,8 +20,8 @@ Each section of the roadmap will have it's own directory, which will be in the r
 
 ## Solutions Overview
 These are the sections of the roadmap, in the order I will most likely be completing them. If a section has been started by me, it will have a progress bar next to it, and it will link to a section outlining my solutions to the problems in that section that I've completed so far. If it has been completed, it will have a checkmark next to it.
-### Total : ![7/150](https://progress-bar.xyz/7/?scale=150&suffix=/150)
-- [ ] [Arrays and Hashing](#arrays-and-hashing) ![7/9](https://progress-bar.xyz/7/?scale=9&suffix=/9)
+### Total : ![8/150](https://progress-bar.xyz/8/?scale=150&suffix=/150)
+- [ ] [Arrays and Hashing](#arrays-and-hashing) ![8/9](https://progress-bar.xyz/8/?scale=9&suffix=/9)
 - [ ] Two Pointers
 - [ ] Stack
 - [ ] Binary Search
@@ -49,6 +49,7 @@ These are the sections of the roadmap, in the order I will most likely be comple
 5. [Top K Elements in List](#top-k-elements-in-list)
 6. [String Encode and Decode](#string-encode-and-decode)
 7. [Products of Array Discluding Self](#product-of-array-except-self)
+8. [Valid Sudoku](#valid-sudoku)
 
 ---
 
@@ -175,5 +176,21 @@ Notice how these have the same time and space complexities. While the division m
 
 #### Key Takeaways:
 I've been wanting to see an application of prefix and postfix operations for some time now, since I've heard a lot about how useful they can be. I'll definitely keep this concept in mind for future problems!
+
+---
+
+### [Valid Sudoku](https://neetcode.io/problems/valid-sudoku)
+#### My Approach:
+This problem felt very digestible after expanding my hash-map based toolbox from the previous problems. Valid Sudoku requires you to take a board represented by a 2D array, and verify if it is valid or not. There's three instances in which a sudoku board would be invalid, based on unique elements in the row, column, and squares of 3x3. Because of this, I decided to make a dictionary for each of them, where the key identifies which row/column/square I'm looking at, and the value contains all the numbers I've seen in it so far. If I'm looking at a number and I've already seen it somewhere, I can return False early, since it only takes one to make it invalid.
+
+[My Solution (Python)](/Arrays_and_Hashing/Valid_Sudoku/solution.py)
+
+#### Solution Analysis:
+Time Complexity (solution 1) -> `O(1)`
+
+Technically since the size of the board is fixed, the runtime complexity of this problem is constant time.
+
+#### Key Takeaways:
+I was impressed with myself for conceptualizing a solution so quickly, so I shouldn't always doubt myself for immediately thinking of hashmaps. While they're not the solution to everything, they can be a reliable way to write efficient code!
 
 ---
