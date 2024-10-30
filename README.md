@@ -20,8 +20,8 @@ Each section of the roadmap will have it's own directory, which will be in the r
 
 ## Solutions Overview
 These are the sections of the roadmap, in the order I will most likely be completing them. If a section has been started by me, it will have a progress bar next to it, and it will link to a section outlining my solutions to the problems in that section that I've completed so far. If it has been completed, it will have a checkmark next to it.
-### Total : ![8/150](https://progress-bar.xyz/8/?scale=150&suffix=/150)
-- [ ] [Arrays and Hashing](#arrays-and-hashing) ![8/9](https://progress-bar.xyz/8/?scale=9&suffix=/9)
+### Total : ![9/150](https://progress-bar.xyz/9/?scale=150&suffix=/150)
+- [x] [Arrays and Hashing](#arrays-and-hashing) ![9/9](https://progress-bar.xyz/9/?scale=9&suffix=/9)
 - [ ] Two Pointers
 - [ ] Stack
 - [ ] Binary Search
@@ -50,6 +50,7 @@ These are the sections of the roadmap, in the order I will most likely be comple
 6. [String Encode and Decode](#string-encode-and-decode)
 7. [Products of Array Discluding Self](#product-of-array-except-self)
 8. [Valid Sudoku](#valid-sudoku)
+9. [Longest Consecutive Sequence](#longest-consecutive-sequence)
 
 ---
 
@@ -186,11 +187,31 @@ This problem felt very digestible after expanding my hash-map based toolbox from
 [My Solution (Python)](/Arrays_and_Hashing/Valid_Sudoku/solution.py)
 
 #### Solution Analysis:
-Time Complexity (solution 1) -> `O(1)`
+Time Complexity -> `O(1)`
 
 Technically since the size of the board is fixed, the runtime complexity of this problem is constant time.
 
 #### Key Takeaways:
 I was impressed with myself for conceptualizing a solution so quickly, so I shouldn't always doubt myself for immediately thinking of hashmaps. While they're not the solution to everything, they can be a reliable way to write efficient code!
+
+---
+
+### [Longest Consecutive Sequence](https://neetcode.io/problems/longest-consecutive-sequence)
+#### My Approach:
+This problem is one that can be easy to overcomplicate. At first, I was wondering what kind of information I needed to store current sequences and their length. Maybe a tuple keyed hash map? After playing with the idea, I realized that was too complicated for this problem, although possibly valid in some way. Ultimately my solution ended up using a hash set, which meant constant time access and no duplicates, meaning I could then loop through each number to see if:
+a. It was already part of a sequence (i.e. a number comes before it)
+b. It is the beginning of a new sequence.
+
+In the second case, I could just see how many numbers sequentially are found in the set after the initial number, and record the sequence length if it was a new maximum.
+
+[My Solution (Python)](/Arrays_and_Hashing/Longest_Consecutive_Sequence/solution.py)
+
+#### Solution Analysis:
+Time Complexity -> `O(n)`
+
+Constructing the set is a linear time operation, and I had to loop through the list on my own once to check each number for a sequence, but all of this levels out to be linear time. When counting sequences, each number can only be considered once, since it can only be part of a single sequence (this is why we check if it's the beginning).
+
+#### Key Takeaways:
+Removing duplicates and allowing for constant time access makes hash sets a very valuable tool to use for future problems. Also, being able to simply construct a set from a list without having to manually iterate over it is very nice!
 
 ---
