@@ -20,10 +20,10 @@ Each section of the roadmap will have it's own directory, which will be in the r
 
 ## Solutions Overview
 These are the sections of the roadmap, in the order I will most likely be completing them. If a section has been started by me, it will have a progress bar next to it, and it will link to a section outlining my solutions to the problems in that section that I've completed so far. If it has been completed, it will have a checkmark next to it.
-### Total : ![9/150](https://progress-bar.xyz/9/?scale=150&suffix=/150)
-- [x] [Arrays and Hashing](#arrays-and-hashing) ![9/9](https://progress-bar.xyz/9/?scale=9&suffix=/9)
-- [ ] Two Pointers
-- [ ] Stack
+### Total : ![10/150](https://progress-bar.xyz/9/?scale=150&suffix=/150)
+- [x] [Arrays and Hashing](#arrays-and-hashing) 
+- [ ] Two Pointers ![0/5](https://progress-bar.xyz/0/?scale=5&suffix=/5)
+- [ ] [Stack](#stack) ![1/7](https://progress-bar.xyz/1/?scale=7&suffix=/7)
 - [ ] Binary Search
 - [ ] Sliding Window
 - [ ] Linked List
@@ -52,6 +52,12 @@ These are the sections of the roadmap, in the order I will most likely be comple
 8. [Valid Sudoku](#valid-sudoku)
 9. [Longest Consecutive Sequence](#longest-consecutive-sequence)
 
+## Two Pointers
+
+1. 
+
+## Stack
+1. [Valid Parentheses](#valid-parentheses)
 ---
 
 ### [Duplicate Integer](https://neetcode.io/problems/duplicate-integer)
@@ -213,5 +219,21 @@ Constructing the set is a linear time operation, and I had to loop through the l
 
 #### Key Takeaways:
 Removing duplicates and allowing for constant time access makes hash sets a very valuable tool to use for future problems. Also, being able to simply construct a set from a list without having to manually iterate over it is very nice!
+
+---
+
+### [Valid Parentheses](https://neetcode.io/problems/validate-parentheses)
+#### My Approach:
+Introducing the first stack problem, I had a good amount of confidence coming into this. Partially because I knew I needed a stack (duh), but also because I had to implement a parser for parentheses before, when making a programming language parser for school. The idea is really simple, I made a dictionary of right parentheses keys and their left compliment as the value. After this, I made a stack, and while iterating over the string if I see a left bracket, I just throw it on the stack, otherwise, I check if the compliment is on the top (which it should be for a valid string), and will pop the compliment if it exists. If at any point I don't find a compliment or my stack is empty when finding a right bracket, I know immediately that the string is invalid. Once I'm done iterating over the string, I make sure the stack is empty, and return it to be true valid if it is.
+
+[My Solution (Python)](/Stack/Valid_Parentheses/solution.py)
+
+#### Solution Analysis:
+Time Complexity -> `O(n)`
+
+The number of operations scales linearly with the number of items in the input string, so time complexity is fairly straightforward here!
+
+#### Key Takeaways:
+Nothing to take away from this one really, but I did consider using the ascii number values of the parentheses instead of a compliment dictionary. The issue however is that the distance between left and right parentheses is inconsisent between the various types.
 
 ---
